@@ -8,9 +8,9 @@ const crawler = require('crawler');
 const cliProgressBar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
 const crawl = new crawler({
     maxConnections: 1,
-    rateLimit: 100,
+    rateLimit: 1000,
     retries: 2,
-    retryTimeout: 30000,
+    retryTimeout: 10000,
     followRedirect: false,
 });
 
