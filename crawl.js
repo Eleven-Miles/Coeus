@@ -68,9 +68,12 @@ const crawlerPromise = (url) => {
             dataToWrite += `${result.url}, ${result.status}\n`;
         });
 
-        writeFileSync('./output/sitemap-response.csv', dataToWrite, 'utf8');
+        const fileTimeStamp = new Date().toISOString().replace(/:/g, '-');
+        const filename = `./output/sitemap-response-${fileTimeStamp}.csv`;
 
-        console.log('Crawl complete, results written to output/sitemap-response.csv');
+        writeFileSync(filename, dataToWrite, 'utf8');
+
+        console.log(`Crawl complete, results written to: ${filename}`);
     } catch (error) {
         console.error('Invalid sitemap error:', error);
         return;
